@@ -5,22 +5,19 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Fecha</th>
-        <th>Valor</th>
-        <th>Dispositivo</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let elemento of listado">
-        <td>{{ elemento.medicionId }}</td>
-        <td>{{ elemento.fecha }}</td>
-        <td>{{ elemento.valor }}</td>
-        <td>{{ elemento.dispositivoId }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <ion-grid>
+    <ion-row style="background-color: var(--ion-color-primary); color: white; font-weight: bold;">
+      <ion-col>ID</ion-col>
+      <ion-col>Fecha</ion-col>
+      <ion-col>Valor</ion-col>
+      <ion-col>Dispositivo</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let elemento of listado" style="border-bottom: 1px solid var(--ion-color-medium); padding: 8px 0;">
+      <ion-col>{{ elemento.medicionId }}</ion-col>
+      <ion-col>{{ elemento.fecha }}</ion-col>
+      <ion-col>{{ elemento.valor }}</ion-col>
+      <ion-col>{{ elemento.dispositivoId }}</ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
