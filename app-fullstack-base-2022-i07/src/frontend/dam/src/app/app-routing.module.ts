@@ -22,6 +22,14 @@ const routes: Routes = [
   {
     path: 'detalle-galga',
     loadChildren: () => import('./detalle-galga/detalle-galga.module').then( m => m.DetalleGalgaPageModule)
+  },
+  {
+    path: 'detalle-mediciones',
+    loadChildren: () => import('./detalle-mediciones/detalle-mediciones.module').then( m => m.DetalleMedicionesPageModule)
+  },
+  {
+    path: 'detalle-logs',
+    loadChildren: () => import('./detalle-logs/detalle-logs.module').then( m => m.DetalleLogsPageModule)
   }
 ];
 

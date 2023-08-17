@@ -52,6 +52,31 @@ app.get('/devices/', function(req, res, next) {
     });
 });
 
+app.post('/tablas/',function(req,res){
+    console.log('Llega a tablas'+ JSON.stringify(req.body));
+    es.send({'mensaje': 'Chao DAM'}).status(200);
+});
+
+app.get('/mediciones/',function(req,res){
+    pool.query('Select * from Mediciones', function(err, result, fields) {
+        if (err) {
+            res.send(err).status(400);
+            return;
+        }
+        res.send(result);
+    });
+});
+
+app.get('/logs/',function(req,res){
+    pool.query('Select * from Log_Riegos', function(err, result, fields) {
+        if (err) {
+            res.send(err).status(400);
+            return;
+        }
+        res.send(result);
+    });
+});
+
 app.listen(PORT, function(req, res) {
     console.log("NodeJS API running correctly");
 });

@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Riegos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Apertura</th>
+        <th>Fecha</th>
+        <th>ValvulaID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let elemento of listado">
+        <td>{{ elemento.logRiegoId }}</td>
+        <td>{{ elemento.apertura }}</td>
+        <td>{{ elemento.fecha }}</td>
+        <td>{{ elemento.electrovalvulaId }}</td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>
