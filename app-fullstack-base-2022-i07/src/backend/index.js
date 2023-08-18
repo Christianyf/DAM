@@ -42,6 +42,9 @@ app.get('/', function(req, res, next) {
     res.send({'mensaje': 'Hola DAM'}).status(200);
 });
 
+app.get('/mediciones/add', function(req, res, next) {
+    res.send({'mensaje': 'Holiiiii DAM'}).status(200);
+});
 app.get('/devices/', function(req, res, next) {
     pool.query('Select * from Dispositivos', function(err, result, fields) {
         if (err) {
@@ -52,15 +55,27 @@ app.get('/devices/', function(req, res, next) {
     });
 });
 
-app.post('/tablas/',function(req,res){
-    console.log('Llega a tablas'+ JSON.stringify(req.body));
-    es.send({'mensaje': 'Chao DAM'}).status(200);
-});
 
 app.get('/mediciones/',function(req,res){
     pool.query('Select * from Mediciones', function(err, result, fields) {
         if (err) {
             res.send(err).status(400);
+            return;
+        }
+        res.send(result);
+    });
+});
+
+app.post('/mediciones/add', function (req, res) {
+    console.log("llega a la API")
+    pool.query("SET time_zone = '-06:00'");
+    const sqlQuery = 'INSERT INTO Mediciones (fecha, valor, dispositivoId) VALUES (?, ?, ?)';
+    const values = [req.body.fecha, req.body.valor, req.body.dispositivoId];
+
+    pool.query(sqlQuery, values, function (err, result, fields) {
+        if (err) {
+            console.error(err);
+            res.status(400).send("Error while adding a new measurement");
             return;
         }
         res.send(result);

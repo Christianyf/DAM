@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Medida } from '../modelos/mediciones';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +14,22 @@ export class LoadMedicionesService {
 
   }
 
-  // Add a new measurement value into a device.
-  // invokes API Endpoint http://localhost:8000/api/v1/measure/add with a medicion variable
+
   agregarMedicion(medicion: Medida){
-    //return this._http.post(this.urlApi+'/measure/add',{fecha:formatDate(medicion.fecha,'YYYYMMddhhmmss', 'en-US', 'CST' ),valor:medicion.valor,dispositivoId:medicion.dispositivoId}).toPromise().then((result)=>result);
-    return this._http.post(this.urlApi,{fecha:medicion.fecha.toISOString(),valor:medicion.valor,dispositivoId:medicion.dispositivoId}).toPromise().then((result)=>result);
-    //return this._http.post(this.urlApi+'/measure/add',{fecha:medicion.fecha.toISOString().slice(0, 19).replace('T', ' '),valor:medicion.valor,dispositivoId:medicion.dispositivoId}).toPromise().then((result)=>result);
-   }
-  
-   verMediciones(){
+
+    const now = new Date();
+    const aux = now.toISOString().slice(0,19).replace('T', ' ');
+    const aux2= formatDate(now,'YYYYMMddhhmmss', 'en-US', 'CST' )
+    const aux3 = now.toISOString();
+    console.log("llega al servicio");
+    console.log(aux);
+    console.log(aux2);
+    console.log(aux3);
+    //return this._http.post(this.urlApi+'/add',{medicionId:12,fecha:aux3,valor:60,dispositivoId:1});
+    return this._http.post(this.urlApi+'/add',{fecha:aux3,valor:60,dispositivoId:1});
+    
+  }
+  verMediciones(){
     return this._http.get(this.urlApi);
-   }
+  }
 }
