@@ -3,8 +3,10 @@
       <app-detalle-sensor [galga]="elemento" [value]="value" style="margin-bottom: 10px;"></app-detalle-sensor>
   </div>
   <br>
-  <!-- Buttons Column -->
   <ion-col size="5" style="margin-top: -10px;">
+    <ion-text style="text-align: center;">
+      Presión: {{value}}
+    </ion-text>
     <ion-button expand="full" color="tertiary" (click)="toggleValve()">{{ isValveOpen ? 'Cerrar electroválvula' : 'Abrir electroválvula' }}</ion-button>
     <ion-button expand="full" color="tertiary" (click)="verMediciones()">Ver todas las mediciones</ion-button>
     <ion-button expand="full" color="tertiary" (click)="verLogs()">Ver Log de riegos</ion-button>
