@@ -8,6 +8,7 @@ import { DetalleGalgaPageRoutingModule } from './detalle-galga-routing.module';
 
 import { DetalleGalgaPage } from './detalle-galga.page';
 import { DetalleSensorPageModule } from '../detalle-sensor/detalle-sensor.module';
+import { UnidadPipe } from '../pipes/unidad.pipe';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { DetalleSensorPageModule } from '../detalle-sensor/detalle-sensor.module
     DetalleGalgaPageRoutingModule,
     DetalleSensorPageModule
   ],
-  declarations: [DetalleGalgaPage],
+  declarations: [DetalleGalgaPage,UnidadPipe],
   exports: [DetalleGalgaPage]
 })
 export class DetalleGalgaPageModule {}

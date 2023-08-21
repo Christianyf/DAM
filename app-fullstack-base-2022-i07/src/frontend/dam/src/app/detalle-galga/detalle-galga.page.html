@@ -5,7 +5,7 @@
   <br>
   <ion-col size="5" style="margin-top: -10px;">
     <ion-text style="text-align: center;">
-      Presión: {{value}}
+      Presión: {{value | unidad}}
     </ion-text>
     <ion-button expand="full" color="tertiary" (click)="toggleValve()">{{ isValveOpen ? 'Cerrar electroválvula' : 'Abrir electroválvula' }}</ion-button>
     <ion-button expand="full" color="tertiary" (click)="verMediciones()">Ver todas las mediciones</ion-button>
