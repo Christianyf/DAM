@@ -1,37 +1,44 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription, fromEvent, interval, map } from 'rxjs';
-import { DispositivoService } from '../services/dispositivo.service'
-import { error } from 'console';
+import { Component, OnInit } from '@angular/core';
+import { DispositivoService } from '../services/dispositivo.service';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-dispositivos',
   templateUrl: './dispositivos.page.html',
   styleUrls: ['./dispositivos.page.scss'],
 })
-//export class DispositivosPage implements OnInit, OnDestroy
-export class DispositivosPage implements OnInit  {
+export class DispositivosPage implements OnInit {
 
+  enable = false;
   listado: any[] = [];
-  constructor(private _dispositivoService: DispositivoService,private navCtrl:NavController,private router: Router) {}
+
+  constructor(
+    private _dispositivoService: DispositivoService,
+    private navCtrl: NavController,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
+    
+  }
+
+  handleItemClick(elemento: any) {
+    console.log("Item clicked");
+    this.router.navigate(['detalle-galga'], {
+      state: { elemento }
+    });
+  }
+
+  enableOn() {
+    this.enable = true;
     this._dispositivoService.getListadoDispositivos().subscribe(
-      (Response) =>{
+      (Response) => {
         this.listado = Response as any[];
       },
       (error) => {
         console.error('Error al obtener los dispositivos');
       }
     );
-  }
-
-  handleItemClick(elemento: any) {
-    console.log("Item clicked");
-    // this.navCtrl.navigateForward('detalle-galga${encodeURIComponent(JSON.stringify(elemento))}')
-    this.router.navigate(['detalle-galga'],{
-      state:{elemento}
-    });
   }
 }
