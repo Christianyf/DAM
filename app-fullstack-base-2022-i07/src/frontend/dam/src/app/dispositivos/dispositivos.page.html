@@ -7,8 +7,5 @@
 <ion-content [fullscreen]="true">
   <div *ngFor="let elemento of listado">
      <app-dispositivo [dispositivo]="elemento" (click)="handleItemClick(elemento)"></app-dispositivo>
-      <ion-button slot="end" fill="outline" color="medium">
-        Ver Detalles
-      </ion-button>
   </div>
 </ion-content>
