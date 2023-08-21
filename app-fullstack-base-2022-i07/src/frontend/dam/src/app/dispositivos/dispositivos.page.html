@@ -18,7 +18,7 @@
     <ion-button fill="clear" (click)="disableOn()" *ngIf="enable">Ocultar</ion-button>
   </ion-card>
   <div *ngIf="enable">
-    <div *ngFor="let elemento of listado">
+    <div *ngFor="let elemento of listado" appColorear>
       <app-dispositivo [dispositivo]="elemento" (click)="handleItemClick(elemento)"></app-dispositivo>
    </div>
   </div>

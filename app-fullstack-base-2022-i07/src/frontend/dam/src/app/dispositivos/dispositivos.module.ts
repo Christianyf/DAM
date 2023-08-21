@@ -8,6 +8,7 @@ import { DispositivosPageRoutingModule } from './dispositivos-routing.module';
 
 import { DispositivosPage } from './dispositivos.page';
 import { DispositivoComponent } from '../dispositivo/dispositivo.component';
+import { ColorearDirective } from '../directives/colorear.directive';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { DispositivoComponent } from '../dispositivo/dispositivo.component';
     IonicModule,
     DispositivosPageRoutingModule
   ],
-  declarations: [DispositivosPage,DispositivoComponent],
+  declarations: [DispositivosPage,DispositivoComponent,ColorearDirective],
   exports: [DispositivosPage]
 })
 export class DispositivosPageModule {}
