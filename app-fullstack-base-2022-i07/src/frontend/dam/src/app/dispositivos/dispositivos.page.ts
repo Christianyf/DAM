@@ -41,4 +41,7 @@ export class DispositivosPage implements OnInit {
       }
     );
   }
+  disableOn(){
+    this.enable = false;
+  }
 }

@@ -15,6 +15,7 @@
       Presione el botón para listar los dispositivos existentes.
     </ion-card-content>
     <ion-button fill="clear" (click)="enableOn()">Listar</ion-button>
+    <ion-button fill="clear" (click)="disableOn()" *ngIf="enable">Ocultar</ion-button>
   </ion-card>
   <div *ngIf="enable">
     <div *ngFor="let elemento of listado">
