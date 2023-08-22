@@ -38,8 +38,8 @@ export class DetalleGalgaPage implements OnInit {
       this.riego.agregarMedicion(log);
     } else {
       this.value=10;
-      //this.logService.agregarMedicion(med);
-      this.riego.agregarMedicion(log);
+      this.logService.agregarMedicion(med);//carga las mediciones
+      this.riego.agregarMedicion(log);//carga los riegos
     }
     this.updateService.triggerChartUpdate(this.value);
     
