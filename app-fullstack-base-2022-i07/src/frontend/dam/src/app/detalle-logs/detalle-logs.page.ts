@@ -9,12 +9,15 @@ import { LoadLogsService } from '../services/load-logs.service';
 export class DetalleLogsPage implements OnInit {
 
   listado: any[] = [];
+  elemento :any ;
 
 
   constructor(private logService:LoadLogsService) { }
 
   ngOnInit() {
-    this.logService.verMediciones().subscribe(
+    this.elemento = history.state.elemento;
+    console.log(this.elemento.dispositivoId);
+    this.logService.verMediciones(this.elemento.dispositivoId).subscribe(
       (Response) =>{
         this.listado = Response as any[];
         console.log(this.listado);

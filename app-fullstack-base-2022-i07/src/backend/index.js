@@ -83,10 +83,29 @@ app.post('/mediciones/add', function (req, res) {
     });
 });
 
-app.get('/logs/',function(req,res){
-    pool.query('Select * from Log_Riegos', function(err, result, fields) {
+app.get('/logs/:id',function(req,res){
+    const id = req.params.id;
+    console.log("Lo que llega ****");
+    console.log(req.params);
+    pool.query('SELECT * FROM Log_Riegos WHERE electrovalvulaId = ?', [id], function(err, result, fields) {
         if (err) {
             res.send(err).status(400);
+            return;
+        }
+        res.send(result);
+    });
+});
+
+app.post('/logs/add', function (req, res) {
+    console.log("llega a la API log")
+    pool.query("SET time_zone = '-06:00'");
+    const sqlQuery = 'INSERT INTO Log_Riegos (apertura, fecha, electrovalvulaId) VALUES (?, ?, ?)';
+    const values = [req.body.apertura, req.body.fecha, req.body.electrovalvulaId];
+
+    pool.query(sqlQuery, values, function (err, result, fields) {
+        if (err) {
+            console.error(err);
+            res.status(400).send("Error while adding a new log");
             return;
         }
         res.send(result);
