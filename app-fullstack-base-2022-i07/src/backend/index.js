@@ -42,9 +42,7 @@ app.get('/', function(req, res, next) {
     res.send({'mensaje': 'Hola DAM'}).status(200);
 });
 
-app.get('/mediciones/add', function(req, res, next) {
-    res.send({'mensaje': 'Holiiiii DAM'}).status(200);
-});
+
 app.get('/devices/', function(req, res, next) {
     pool.query('Select * from Dispositivos', function(err, result, fields) {
         if (err) {
@@ -56,8 +54,11 @@ app.get('/devices/', function(req, res, next) {
 });
 
 
-app.get('/mediciones/',function(req,res){
-    pool.query('Select * from Mediciones', function(err, result, fields) {
+app.get('/mediciones/:id',function(req,res){
+    const id = req.params.id;
+    console.log("Lo que llega ****");
+    console.log(req.params);
+    pool.query('SELECT * FROM Mediciones WHERE dispositivoId = ?', [id], function(err, result, fields) {
         if (err) {
             res.send(err).status(400);
             return;

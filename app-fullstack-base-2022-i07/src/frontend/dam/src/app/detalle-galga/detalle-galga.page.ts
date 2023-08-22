@@ -38,10 +38,11 @@ export class DetalleGalgaPage implements OnInit {
     this.updateService.triggerChartUpdate(this.value);
   }
 
-  verMediciones(){
+  verMediciones(elemento: any){
     console.log("Item clicked 2");
+    console.log(elemento)
     this.router.navigate(['detalle-mediciones'],{
-      state:{}//elemento
+      state:{elemento}//elemento
     });
   }
   verLogs(){

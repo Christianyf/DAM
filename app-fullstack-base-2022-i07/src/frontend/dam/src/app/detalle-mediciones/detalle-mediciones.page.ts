@@ -9,11 +9,15 @@ import { LoadMedicionesService } from '../services/load-mediciones.service';
 export class DetalleMedicionesPage implements OnInit {
 
   listado: any[] = [];
+  elemento :any ;
 
   constructor(private logService: LoadMedicionesService) { }
 
   ngOnInit() {
-    this.logService.verMediciones().subscribe(
+    this.elemento = history.state.elemento;
+    console.log("desde las mediciones")
+    console.log(this.elemento.dispositivoId);
+    this.logService.verMediciones(this.elemento.dispositivoId).subscribe(
       (Response) =>{
         this.listado = Response as any[];
         console.log(this.listado);

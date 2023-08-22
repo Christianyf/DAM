@@ -8,7 +8,7 @@ import { formatDate } from '@angular/common';
 })
 export class LoadMedicionesService {
 
-  urlApi='http://localhost:8000/mediciones';
+  urlApi='http://localhost:8000/mediciones/';
 
   constructor(private _http:HttpClient){
 
@@ -29,7 +29,9 @@ export class LoadMedicionesService {
     return this._http.post(this.urlApi+'/add',{fecha:aux3,valor:60,dispositivoId:1});
     
   }
-  verMediciones(){
-    return this._http.get(this.urlApi);
+  verMediciones(id: any){
+    console.log("lo que llega al service")
+    console.log(id)
+    return this._http.get(this.urlApi+id);
   }
 }
